@@ -4,10 +4,30 @@
  */
 package ista.edu.project.ProyectoFactura.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author DELL
  */
+@Getter
+@Setter
+@Entity
 public class Producto {
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_producto")
+    private Integer id_producto;
+    @Column(name = "nombre")
+    private String nombre;
+    @Column(name = "precio")
+    private double precio;
+    @Column(name = "stock")
+    private Integer stock;
 }
