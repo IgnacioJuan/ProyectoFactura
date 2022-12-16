@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +29,13 @@ public class Producto {
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "precio")
-    private double precio;
+    private Double precio;
     @Column(name = "stock")
     private Integer stock;
+
+    //RELACIONES
+    //Relacion con detalle
+    @OneToMany(mappedBy = "producto")
+    private List<DetalleFactura> detalles;
+
 }

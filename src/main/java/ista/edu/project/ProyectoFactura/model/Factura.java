@@ -9,7 +9,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.sql.Date;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import java.util.Date;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +31,15 @@ public class Factura {
     private Integer id_factura;
     @Column(name = "fecha")
     private Date fecha;
-//    @Column(name = "id_cliente")
-//    private String id_cliente;
     
+    //Relaciones
+    //Relacion con cliente
+    @ManyToOne
+    @JoinColumn(name = "id_cliente",referencedColumnName = "id_cliente")
+    private Cliente cliente;
+    
+    //Relacion con detalle
+    @OneToMany(mappedBy = "factura")
+    private List<DetalleFactura> detalles;
+
 }
